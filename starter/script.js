@@ -98,6 +98,41 @@ const userChoices = {
 }
 
 
+// Get password length and make sure that it is between 10 and 64 
+const getPasswordLength = () => {
+  let correctPasswordLength = false;
+  let message = "";
+
+  while (correctPasswordLength === false) {
+    userInput = prompt("How long do you want your password to be? Please note the length needs to be between 10 and 64.");
+    userChoices.passwordLength = parseInt(userInput, 10);
+
+    switch (true) {
+      case isNaN(userChoices.passwordLength):
+        message = alert("Come on, give me a number! 🔢");
+        break;
+      case (userChoices.passwordLength === 0):
+        message = alert("Seriously, what am I supposed to do with this? 😩")
+        break;
+      case (userChoices.passwordLength < 10):
+        message = alert("This password length is too short. It needs to be between 10 and 64 😉")
+        break;
+      case (userChoices.passwordLength > 64) && (userChoices.passwordLength <= 99):
+        message = alert("This password length is too long. It needs to be between 10 and 64 😉")
+        break;
+      case (userChoices.passwordLength >= 100):
+        message = alert("Really? You don't even deserve a password!😫 OK, try again...")
+        break;
+      default:
+        message = alert("Great, thank you! 🙌")
+        correctPasswordLength = true;
+        break;
+    }
+  }
+
+  return userChoices.passwordLength;
+};
+
 // Function to prompt user for password options
 function getPasswordOptions() {
 

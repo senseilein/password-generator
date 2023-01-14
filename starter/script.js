@@ -147,25 +147,25 @@ const getPasswordOptions = () => {
     userChoices.lowerCasedCharacters = confirm("Do you want to include lowercased characters? 🔡");
     if (userChoices.lowerCasedCharacters === true) {
       characterTypes++;
-      selectedOptions += [...characterTypeOptions.lowerCasedCharacters];
+      selectedOptions.push(...characterTypeOptions.lowerCasedCharacters);
     };
 
     userChoices.upperCasedCharacters = confirm("Do you want to include uppercased characters? 🔠");
     if (userChoices.upperCasedCharacters === true) {
       characterTypes++;
-      selectedOptions += [...characterTypeOptions.upperCasedCharacters];
+      selectedOptions.push(...characterTypeOptions.upperCasedCharacters);
     };
 
     userChoices.numericCharacters = confirm("Do you want to include numeric characters? 🔢");
     if (userChoices.numericCharacters === true) {
       characterTypes++;
-      selectedOptions += [...characterTypeOptions.numericCharacters];
+      selectedOptions.push(...characterTypeOptions.numericCharacters);
     };
 
     userChoices.specialCharacters = confirm("Do you want to include special characters? 🔣");
     if (userChoices.specialCharacters === true) {
       characterTypes++;
-      selectedOptions += [...characterTypeOptions.specialCharacters];
+      selectedOptions.push(...characterTypeOptions.specialCharacters);
     };
 
     // Display a message on the screen depending on the number of character types selected
@@ -205,8 +205,13 @@ const getRandom = (arr) => {
 }
 
 // Function to generate password with user input
-function generatePassword() {
-
+const generatePassword = (options, length) => {
+  let randomIndex = Math.floor(Math.random() * length);
+  let result = [];
+  for (let i = 0; i < length; i++) {
+    result.splice(randomIndex, 0, getRandom(options));
+  }
+  return result.join("");
 }
 
 // Get references to the #generate element

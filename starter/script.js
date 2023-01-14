@@ -98,7 +98,7 @@ const userChoices = {
 }
 
 
-// Get password length and make sure that it is between 10 and 64 
+// Prompt user for password length and make sure that it is between 10 and 64 characters
 const getPasswordLength = () => {
   let correctPasswordLength = false;
   let message = "";
@@ -133,9 +133,69 @@ const getPasswordLength = () => {
   return userChoices.passwordLength;
 };
 
-// Function to prompt user for password options
-function getPasswordOptions() {
+// Prompt user for password (character type) options
+let selectedOptions = [];
+const getPasswordOptions = () => {
+  let characterTypes = 0;
 
+  let selectionNotReady = true;
+
+  do {
+    // for each character type category, if the user wants to include that option in the password,
+    // increment the characterTypes variable by 1 
+    // and make a shallow copy of the corresponding array of characters to the selectedOptions array
+    userChoices.lowerCasedCharacters = confirm("Do you want to include lowercased characters? 🔡");
+    if (userChoices.lowerCasedCharacters === true) {
+      characterTypes++;
+      selectedOptions += [...characterTypeOptions.lowerCasedCharacters];
+    };
+
+    userChoices.upperCasedCharacters = confirm("Do you want to include uppercased characters? 🔠");
+    if (userChoices.upperCasedCharacters === true) {
+      characterTypes++;
+      selectedOptions += [...characterTypeOptions.upperCasedCharacters];
+    };
+
+    userChoices.numericCharacters = confirm("Do you want to include numeric characters? 🔢");
+    if (userChoices.numericCharacters === true) {
+      characterTypes++;
+      selectedOptions += [...characterTypeOptions.numericCharacters];
+    };
+
+    userChoices.specialCharacters = confirm("Do you want to include special characters? 🔣");
+    if (userChoices.specialCharacters === true) {
+      characterTypes++;
+      selectedOptions += [...characterTypeOptions.specialCharacters];
+    };
+
+    // Display a message on the screen depending on the number of character types selected
+    switch (true) {
+      case (characterTypes < 1):
+        message = alert("Really? Please select at least one character type, mmkay? 💁")
+        break;
+      case (characterTypes < 2):
+        message = alert("You've only selected 1 character type, I guess you don't want a secure password!");
+        break;
+      case (characterTypes < 3):
+        message = alert("Not the most secure password but hey, that's your choice!");
+        break;
+      case (characterTypes < 4):
+        message = alert("Great! Thank you for your patience while we're generating your password! 😉");
+        break;
+      case (characterTypes === 4):
+        message = alert("That's a strong password! Thank you for your patience while we're generating your password! 😉");
+        break;
+    }
+
+    // if no character type selected, then the selection is still not ready > so prompt user again!
+    if (selectedOptions.length > 0) {
+      selectionNotReady = false;
+    }
+
+  } while (selectionNotReady);
+
+  // Return an array containing the different types of characters requested by the user
+  return selectedOptions;
 }
 
 // Function for getting a random element from an array

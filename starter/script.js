@@ -88,6 +88,16 @@ const characterTypeOptions = {
   ]
 }
 
+// Object containing user's choices
+const userChoices = {
+  passwordLength: 0,
+  lowerCasedCharacters: false,
+  upperCasedCharacters: false,
+  numericCharacters: false,
+  specialCharacters: false,
+}
+
+
 // Function to prompt user for password options
 function getPasswordOptions() {
 

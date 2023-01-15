@@ -205,11 +205,12 @@ const getRandom = (arr) => {
 }
 
 // Function to generate password with user input
-const generatePassword = (options, length) => {
-  let randomIndex = Math.floor(Math.random() * length);
+const generatePassword = () => {
+  let randomIndex = Math.floor(Math.random() * userChoices.passwordLength);
   let result = [];
-  for (let i = 0; i < length; i++) {
-    result.splice(randomIndex, 0, getRandom(options));
+  for (let i = 0; i < userChoices.passwordLength; i++) {
+    // using the splice method (instead of push or unshift) add a layer of randomness to the password generating process
+    result.splice(randomIndex, 0, getRandom(selectedOptions));
   }
   return result.join("");
 }

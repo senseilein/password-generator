@@ -129,7 +129,6 @@ const getPasswordLength = () => {
         break;
     }
   }
-
   return userChoices.passwordLength;
 };
 
@@ -208,6 +207,7 @@ const getRandom = (arr) => {
 const generatePassword = () => {
   getPasswordLength();
   getPasswordOptions();
+
   let randomIndex = Math.floor(Math.random() * userChoices.passwordLength);
   let result = [];
 
@@ -216,6 +216,9 @@ const generatePassword = () => {
     // using the splice method (instead of push or unshift) add a layer of randomness to the password generating process
     result.splice(randomIndex, 0, getRandom(selectedOptions));
   }
+
+  // Empty the selectedOptions array at the end to prevent unexpected results if user wants to generate a 2nd password
+  selectedOptions = [];
 
   // convert the array into a string
   return result.join("");

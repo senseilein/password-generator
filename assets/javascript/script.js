@@ -1,3 +1,5 @@
+/*------------------------------ INITIAL DATA ------------------------------*/
+
 // Object containing the different options for the character types to be included in the password
 const characterTypeOptions = {
   // Array of special characters to be included in password
@@ -97,16 +99,30 @@ const userChoices = {
   specialCharacters: false,
 }
 
-// Check if a string includes characters that are not digits 
+/*------------------------------ EMPTY VARIABLES TO BE USED LATER ------------------------------*/
+// Array will store copies of arrays of character types selected by user
+let selectedOptions = [];
+let samplesOfSelectedOptions = [];
+
+
+/*------------------------------ FUNCTIONS ------------------------------*/
+
+// Check if a string includes characters that are not digits or empty string (when user clicks OK without answering prompt)
 const isInvalid = (str) => {
   let nonDigit = /\D/;
-  return str.match(nonDigit) ? true : false;
+  return str.match(nonDigit) || str === "" ? true : false;
 }
 
 // Function for getting a random element from an array
-const getRandom = (arr) => {
+const getRandomElementFromArray = (arr) => {
   let randomIndex = Math.floor(Math.random() * arr.length);
   return arr[randomIndex];
+}
+
+// Function for getting a random index based on an array length
+const getRandomIndex = (arrayLength) => {
+  let randomIndex = Math.floor(Math.random() * arrayLength)
+  return randomIndex;
 }
 
 // Prompt user for password length and make sure that it is between 10 and 64 characters
@@ -147,7 +163,6 @@ const getPasswordLength = () => {
 };
 
 // Prompt user for password (character type) options
-let selectedOptions = [];
 const getPasswordOptions = () => {
   let characterTypes = 0;
 
@@ -160,6 +175,7 @@ const getPasswordOptions = () => {
     userChoices.lowerCasedCharacters = confirm("Do you want to include lowercased characters? 🔡");
     if (userChoices.lowerCasedCharacters === true) {
       characterTypes++;
+      samplesOfSelectedOptions.splice()
       selectedOptions.push(...characterTypeOptions.lowerCasedCharacters);
     };
 
@@ -216,13 +232,15 @@ const generatePassword = () => {
   getPasswordLength();
   getPasswordOptions();
 
-  let randomIndex = Math.floor(Math.random() * userChoices.passwordLength);
+  //following line replaced by getRandomIndex() function
+  // let randomIndex = Math.floor(Math.random() * userChoices.passwordLength);
   let result = [];
 
   //loop to populate the result array with the number of characters requested by the user
   for (let i = 0; i < userChoices.passwordLength; i++) {
     // using the splice method (instead of push or unshift) add a layer of randomness to the password generating process
-    result.splice(randomIndex, 0, getRandom(selectedOptions));
+    result.splice(getRandomIndex(userChoices.passwordLength), 0, getRandomElementFromArray(selectedOptions));
+    console.log("Result " + result);
   }
 
   // Empty the selectedOptions array at the end to prevent unexpected results if user wants to generate a 2nd password
@@ -232,6 +250,8 @@ const generatePassword = () => {
   return result.join("");
 }
 
+
+/*------------------------------ MAIN ------------------------------*/
 // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
 

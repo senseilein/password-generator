@@ -109,7 +109,7 @@ const getPasswordLength = () => {
 
     switch (true) {
       case isNaN(userChoices.passwordLength):
-        message = alert("Come on, give me a number! 🔢");
+        message = alert("Come on, give me a number! 😑");
         break;
       case (userChoices.passwordLength === 0):
         message = alert("Seriously, what am I supposed to do with this? 😩")

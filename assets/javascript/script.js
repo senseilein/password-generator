@@ -103,6 +103,12 @@ const isInvalid = (str) => {
   return str.match(nonDigit) ? true : false;
 }
 
+// Function for getting a random element from an array
+const getRandom = (arr) => {
+  let randomIndex = Math.floor(Math.random() * arr.length);
+  return arr[randomIndex];
+}
+
 // Prompt user for password length and make sure that it is between 10 and 64 characters
 const getPasswordLength = () => {
   let correctPasswordLength = false;
@@ -203,12 +209,6 @@ const getPasswordOptions = () => {
 
   // Return an array containing the different types of characters requested by the user
   return selectedOptions;
-}
-
-// Function for getting a random element from an array
-const getRandom = (arr) => {
-  let randomIndex = Math.floor(Math.random() * arr.length);
-  return arr[randomIndex];
 }
 
 // Function to generate password with user input

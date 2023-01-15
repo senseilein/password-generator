@@ -169,8 +169,12 @@ const getPasswordLength = () => {
 
 // Prompt user for password (character type) options
 const getPasswordOptions = () => {
-
   let selectionNotReady = true;
+
+  // Make sure selectedOptions/result arrays/numOfSelectedCharacterTypes are empty > to prevent unexpected results if user wants to generate a 2nd password
+  selectedOptions = [];
+  result = [];
+  numOfSelectedCharacterTypes = 0;
 
   do {
     // for each character type category, if the user wants to include that option in the password,
@@ -203,8 +207,6 @@ const getPasswordOptions = () => {
       result.splice(getRandomIndex(userChoices.passwordLength), 0, getRandomElementFromArray(characterTypeOptions.specialCharacters))
       selectedOptions.push(...characterTypeOptions.specialCharacters);
     };
-    console.log(result);
-    console.log("result length " + result.length)
 
     // Display a message on the screen depending on the number of character types selected
     switch (true) {
@@ -241,27 +243,17 @@ const generatePassword = () => {
   getPasswordLength();
   getPasswordOptions();
 
-  //following line replaced by getRandomIndex() function
-  // let randomIndex = Math.floor(Math.random() * userChoices.passwordLength);
-  // let result = [];
-  console.log("password length " + userChoices.passwordLength)
-  let emptySpacesInResult = userChoices.passwordLength - numOfSelectedCharacterTypes;
+  let emptySpacesInResultArray = userChoices.passwordLength - numOfSelectedCharacterTypes;
 
   //loop to populate the result array with the number of characters requested by the user
-  for (let i = 0; i < emptySpacesInResult; i++) {
+  for (let i = 0; i < emptySpacesInResultArray; i++) {
     // using the splice method (instead of push or unshift) add a layer of randomness to the password generating process
     result.splice(getRandomIndex(userChoices.passwordLength), 0, getRandomElementFromArray(selectedOptions));
-    console.log("final Result " + result);
-    console.log("result final length " + result.length)
   }
 
-  // Empty the selectedOptions array at the end to prevent unexpected results if user wants to generate a 2nd password
-  selectedOptions = [];
-
-  // convert the array into a string
+  // convert the array into a string to generate the password
   return result.join("");
 }
-
 
 /*------------------------------ MAIN ------------------------------*/
 // Get references to the #generate element

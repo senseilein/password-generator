@@ -97,6 +97,11 @@ const userChoices = {
   specialCharacters: false,
 }
 
+// Check if a string includes characters that are not digits 
+const isInvalid = (str) => {
+  let nonDigit = /\D/;
+  return str.match(nonDigit) ? true : false;
+}
 
 // Prompt user for password length and make sure that it is between 10 and 64 characters
 const getPasswordLength = () => {
@@ -104,13 +109,16 @@ const getPasswordLength = () => {
   let message = "";
 
   while (correctPasswordLength === false) {
-    userInput = prompt("How long do you want your password to be? Please note the length needs to be between 10 and 64.");
-    userChoices.passwordLength = parseInt(userInput, 10);
+    userInput = prompt("How long do you want your password to be? Please note the length needs to be an integer between 10 and 64.");
+
+    if (isInvalid(userInput)) {
+      message = alert("Come on, give me a number! 😑");
+      continue;
+    } else {
+      userChoices.passwordLength = parseInt(userInput, 10);
+    }
 
     switch (true) {
-      case isNaN(userChoices.passwordLength):
-        message = alert("Come on, give me a number! 😑");
-        break;
       case (userChoices.passwordLength === 0):
         message = alert("Seriously, what am I supposed to do with this? 😩")
         break;
@@ -211,7 +219,7 @@ const generatePassword = () => {
   let randomIndex = Math.floor(Math.random() * userChoices.passwordLength);
   let result = [];
 
-  //loop to populate the resukt array with the number of characters requested by the user
+  //loop to populate the result array with the number of characters requested by the user
   for (let i = 0; i < userChoices.passwordLength; i++) {
     // using the splice method (instead of push or unshift) add a layer of randomness to the password generating process
     result.splice(randomIndex, 0, getRandom(selectedOptions));

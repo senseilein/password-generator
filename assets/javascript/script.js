@@ -118,7 +118,7 @@ const getPasswordLength = () => {
     userInput = prompt("How long do you want your password to be? Please note the length needs to be an integer between 10 and 64.");
 
     if (isInvalid(userInput)) {
-      message = alert("Come on, give me a number! 😑");
+      message = alert("Come on, give me a simple number! 😑");
       continue;
     } else {
       userChoices.passwordLength = parseInt(userInput, 10);

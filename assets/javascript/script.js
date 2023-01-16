@@ -165,6 +165,9 @@ const getPasswordLength = () => {
       case (userChoices.passwordLength >= 100):
         message = alert("Really? You don't even deserve a password!😫 OK, try again...")
         break;
+      case (userChoices.passwordLength >= 1000):
+        message = alert("I think you don't need a password, you're just looking for trouble! 😂 But it's OK, try again...")
+        break;
       default:
         message = alert("Great, thank you! 🙌")
         correctPasswordLength = true;

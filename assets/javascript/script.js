@@ -118,6 +118,13 @@ const isInvalid = (str) => {
   return str.match(nonDigit) || str === "" ? true : false;
 }
 
+// Validate user choice of character type
+const validateUserChoice = (arrayOfCharType) => {
+  numOfSelectedCharacterTypes++;
+  result.splice(getRandomIndex(userChoices.passwordLength), 0, getRandomElementFromArray(arrayOfCharType))
+  selectedOptions.push(...arrayOfCharType);
+}
+
 // Function for getting a random element from an array
 const getRandomElementFromArray = (arr) => {
   let randomIndex = Math.floor(Math.random() * arr.length);
@@ -158,6 +165,9 @@ const getPasswordLength = () => {
       case (userChoices.passwordLength >= 100):
         message = alert("Really? You don't even deserve a password!😫 OK, try again...")
         break;
+      case (userChoices.passwordLength >= 1000):
+        message = alert("I think you don't need a password, you're just looking for trouble! 😂 But it's OK, try again...")
+        break;
       default:
         message = alert("Great, thank you! 🙌")
         correctPasswordLength = true;
@@ -182,30 +192,22 @@ const getPasswordOptions = () => {
     // and make a shallow copy of the corresponding array of characters to the selectedOptions array
     userChoices.lowerCasedCharacters = confirm("Do you want to include lowercased characters? 🔡");
     if (userChoices.lowerCasedCharacters === true) {
-      numOfSelectedCharacterTypes++;
-      result.splice(getRandomIndex(userChoices.passwordLength), 0, getRandomElementFromArray(characterTypeOptions.lowerCasedCharacters))
-      selectedOptions.push(...characterTypeOptions.lowerCasedCharacters);
+      validateUserChoice(characterTypeOptions.lowerCasedCharacters);
     };
 
     userChoices.upperCasedCharacters = confirm("Do you want to include uppercased characters? 🔠");
     if (userChoices.upperCasedCharacters === true) {
-      numOfSelectedCharacterTypes++;
-      result.splice(getRandomIndex(userChoices.passwordLength), 0, getRandomElementFromArray(characterTypeOptions.upperCasedCharacters))
-      selectedOptions.push(...characterTypeOptions.upperCasedCharacters);
+      validateUserChoice(characterTypeOptions.upperCasedCharacters);
     };
 
     userChoices.numericCharacters = confirm("Do you want to include numeric characters? 🔢");
     if (userChoices.numericCharacters === true) {
-      numOfSelectedCharacterTypes++;
-      result.splice(getRandomIndex(userChoices.passwordLength), 0, getRandomElementFromArray(characterTypeOptions.numericCharacters))
-      selectedOptions.push(...characterTypeOptions.numericCharacters);
+      validateUserChoice(characterTypeOptions.numericCharacters);
     };
 
     userChoices.specialCharacters = confirm("Do you want to include special characters? 🔣");
     if (userChoices.specialCharacters === true) {
-      numOfSelectedCharacterTypes++;
-      result.splice(getRandomIndex(userChoices.passwordLength), 0, getRandomElementFromArray(characterTypeOptions.specialCharacters))
-      selectedOptions.push(...characterTypeOptions.specialCharacters);
+      validateUserChoice(characterTypeOptions.specialCharacters);
     };
 
     // Display a message on the screen depending on the number of character types selected

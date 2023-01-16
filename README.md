@@ -75,7 +75,8 @@ It's done when:
 
 ### ➕ Suggestions for improvement
 
-- Do some DRY improvements, especially in the do...while loop in the getpassword() function
+- Collect user input in a form instead of prompts
+- Research how to turn the app into a Chrome extension
 
 ## 🚀 INSTALLATION
 

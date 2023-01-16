@@ -160,7 +160,7 @@ const getPasswordLength = () => {
 
     switch (true) {
       case (userChoices.passwordLength === 0):
-        message = alert("Seriously, what am I supposed to do with this? 😩")
+        message = alert("Seriously, what am I supposed to do with this? 😩 Oh wait, 0 + 0 = 👀 \nClever, right?")
         break;
       case (userChoices.passwordLength < 10):
         message = alert("This password length is too short. It needs to be between 10 and 64 😉")
@@ -168,11 +168,14 @@ const getPasswordLength = () => {
       case (userChoices.passwordLength > 64) && (userChoices.passwordLength <= 99):
         message = alert("This password length is too long. It needs to be between 10 and 64 😉")
         break;
-      case (userChoices.passwordLength >= 100):
-        message = alert("Really? You don't even deserve a password!😫 OK, try again...")
+      case (userChoices.passwordLength > 99) && (userChoices.passwordLength < 110):
+        message = alert("Really?? You don't even deserve a password!😫 OK, try again...")
         break;
-      case (userChoices.passwordLength >= 1000):
-        message = alert("I think you don't need a password, you're just looking for trouble! 😂 But it's OK, try again...")
+      case (userChoices.passwordLength >= 110) && (userChoices.passwordLength < 120):
+        message = alert(`${userChoices.passwordLength} characters?? I think you don't need a password, you're just looking for trouble! 😂 But it's OK, try again...`)
+        break;
+      case (userChoices.passwordLength >= 120):
+        message = alert(`${userChoices.passwordLength} characters?? I'm out...🏃💨 \nWait, no, you're out! 👉 \nOh, you're still there? I'm calling the police!🚔`)
         break;
       default:
         message = alert("Great, thank you! 🙌")

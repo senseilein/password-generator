@@ -115,7 +115,13 @@ let result = [];
 // Check if a string includes characters that are not digits or empty string (when user clicks OK without answering prompt)
 const isInvalid = (str) => {
   let nonDigit = /\D/;
-  return str.match(nonDigit) || str === "" ? true : false;
+  try {
+    return str.match(nonDigit) || str === "" ? true : false;
+  } catch {
+    // if the string is null also return true without error because it means that user only clicked on cancel or OK without providing any input
+    return true;
+  }
+
 }
 
 // Validate user choice of character type

@@ -85,7 +85,9 @@ No installation needed.
 
 - [Emoji ressources](https://gist.github.com/rxaviers/7360908)
 - This project was created as part of a coding assignment with [Trilogy Education Services](https://skillsforlife.edx.org/?utm_source=govuk)
-
+- Thanks to my classmates and my tutor Tudor for providing feedback that allowed me to make some improvements on the app
+- Special thank to my classmate [Rebecca](https://github.com/ResonantDevotion) for our pseudocode session
+ 
 ## 📜 LICENSE
 
 This repository is licensed under the MIT license.

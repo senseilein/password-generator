@@ -3,6 +3,7 @@
 ![](https://img.shields.io/badge/html-HTML5-orange?logo=html5)
 ![](https://img.shields.io/badge/css-CSS3-%231572B6?logo=css3)
 ![](https://img.shields.io/badge/JavaScript-lightgrey?logo=javascript)
+![](https://img.shields.io/w3c-validation/html?targetUrl=https%3A%2F%2Fsenseilein.github.io%2Fpassword-generator%2F)
 ![](https://img.shields.io/github/license/senseilein/password-generator)
 
 ## 🚩 TABLE OF CONTENT
@@ -19,11 +20,11 @@
 ### 🎯 What is it about?
 
 - An application that an employee can use to generate a random password based on criteria they’ve selected
-- They can choose to include up to 4 categories of characters:
-  1. lowercased characters
-  2. uppercased characters
-  3. numeric characters
-  4. special characters
+- They can choose to include up to 4 categories of characters:  
+  1-lowercased characters  
+  2-uppercased characters  
+  3-numeric characters  
+  4-special characters  
 
 ### Preview
 

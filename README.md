@@ -19,11 +19,11 @@
 ### 🎯 What is it about?
 
 - An application that an employee can use to generate a random password based on criteria they’ve selected
-- They can choose to include up to 4 categories of characters:
-  1 - lowercased characters
-  2. uppercased characters
-  3. numeric characters
-  4. special characters
+- They can choose to include up to 4 categories of characters:  
+  1-lowercased characters  
+  2-uppercased characters  
+  3-numeric characters  
+  4-special characters  
 
 ### Preview
 

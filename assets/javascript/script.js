@@ -166,16 +166,16 @@ const getPasswordLength = () => {
       case (userChoices.passwordLength < 10):
         message = alert("This password length is too short. It needs to be between 10 and 64 😉")
         break;
-      case (userChoices.passwordLength > 64) && (userChoices.passwordLength <= 99):
+      case (userChoices.passwordLength > 64) && (userChoices.passwordLength <= 75):
         message = alert("This password length is too long. It needs to be between 10 and 64 😉")
         break;
-      case (userChoices.passwordLength > 99) && (userChoices.passwordLength < 110):
+      case (userChoices.passwordLength > 75) && (userChoices.passwordLength < 90):
         message = alert("Really?? You don't even deserve a password!😫 OK, try again...")
         break;
-      case (userChoices.passwordLength >= 110) && (userChoices.passwordLength < 120):
+      case (userChoices.passwordLength >= 90) && (userChoices.passwordLength < 100):
         message = alert(`${userChoices.passwordLength} characters?? I think you don't need a password, you're just looking for trouble! 😂 But it's OK, try again...`)
         break;
-      case (userChoices.passwordLength >= 120):
+      case (userChoices.passwordLength >= 100):
         message = alert(`${userChoices.passwordLength} characters?? I'm out...🏃💨 \nWait, no, you're out! 👉 \nOh, you're still there? I'm calling the police!🚔`)
         break;
       default:

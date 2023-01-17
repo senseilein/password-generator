@@ -179,7 +179,7 @@ const getPasswordLength = () => {
         message = alert(`${userChoices.passwordLength} characters?? I'm out...🏃💨 \nWait, no, you're out! 👉 \nOh, you're still there? I'm calling the police!🚔`)
         break;
       default:
-        message = alert("Great, thank you! 🙌")
+        message = alert(`Great! ${userChoices.passwordLength} characters is a decent choice, thank you! 🙌`)
         correctPasswordLength = true;
         break;
     }

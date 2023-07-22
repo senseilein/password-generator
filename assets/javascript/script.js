@@ -100,14 +100,14 @@ const userChoices = {
 }
 
 /*------------------------------ EMPTY VARIABLES TO BE USED LATER ------------------------------*/
-// Will keep track of number of options selected by user (maximum 4)
+// keep track of number of options selected by user (maximum 4)
 let numOfSelectedCharacterTypes = 0;
 
-// Array will store copies of arrays of all character types selected by user
+// store copies of arrays of all character types selected by user
 let selectedOptions = [];
 
-// Array will store the randomly selected characters from the user selection
-// final result will be turn into a string representing the password
+//  store the randomly selected characters from the user selection
+// final result will be turned into a string representing the password
 let result = [];
 
 /*------------------------------ FUNCTIONS ------------------------------*/
@@ -269,12 +269,12 @@ const generatePassword = () => {
 
 /*------------------------------ MAIN ------------------------------*/
 // Get references to the #generate element
-var generateBtn = document.querySelector('#generate');
+let generateBtn = document.querySelector('#generate');
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector('#password');
+  let password = generatePassword();
+  let passwordText = document.querySelector('#password');
 
   passwordText.value = password;
 }
